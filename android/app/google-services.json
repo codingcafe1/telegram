@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "569979142021",
+    "firebase_url": "https://chat-app-2021.firebaseio.com",
+    "project_id": "chat-app-2021",
+    "storage_bucket": "chat-app-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569979142021:android:5bb02f0cb46e9c40898eec",
+        "android_client_info": {
+          "package_name": "com.muhammadali.telegramchatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569979142021-7j4rr51i9fo2hdivauv7ee1ahkmifmog.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.muhammadali.telegramchatapp",
+            "certificate_hash": "3498fdb3a7b76c02a72d33027ff1bab13b7330a1"
+          }
+        },
+        {
+          "client_id": "569979142021-7tnf70vgh3dl2u6pgsdf3a6lp2ej9nkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiNucLksbgNIEFWuDsTXrxBHe1SKfNcKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569979142021-7tnf70vgh3dl2u6pgsdf3a6lp2ej9nkc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "569979142021-odjemf6j2jv9c1k999rv82v6ootii0r6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.muhammadali.telegramchatapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>569979142021-odjemf6j2jv9c1k999rv82v6ootii0r6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.569979142021-odjemf6j2jv9c1k999rv82v6ootii0r6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>569979142021-7j4rr51i9fo2hdivauv7ee1ahkmifmog.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD1beeMpBpbazkf5ZEgNSbOsTA6qKakgIk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>569979142021</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.muhammadali.telegramchatapp</string>
+	<key>PROJECT_ID</key>
+	<string>chat-app-2021</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chat-app-2021.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:569979142021:ios:884d5cae87f2742f898eec</string>
+	<key>DATABASE_URL</key>
+	<string>https://chat-app-2021.firebaseio.com</string>
+</dict>
+</plist>
