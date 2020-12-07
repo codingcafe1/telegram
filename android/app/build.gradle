@@ -38,7 +38,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.muhammadali.telegramchatapp"
+        applicationId "com.just2click.hivechatapp"
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true

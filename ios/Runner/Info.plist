@@ -12,7 +12,7 @@
             <array>
                 <!-- Replace this value: -->
                 <!-- Copied from GoogleServices-Info.plist key REVERSE_CLIENT_ID -->
-                <string>Paste here</string>
+                <string>com.googleusercontent.apps.883352695161-d416o0l8rpp8vo35mc5orj3f9shj7m15</string>
             </array>
         </dict>
     </array>

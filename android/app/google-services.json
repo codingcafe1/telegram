@@ -1,50 +1,43 @@
 {
   "project_info": {
-    "project_number": "569979142021",
-    "firebase_url": "https://chat-app-2021.firebaseio.com",
-    "project_id": "chat-app-2021",
-    "storage_bucket": "chat-app-2021.appspot.com"
+    "project_number": "883352695161",
+    "firebase_url": "https://hive1-a9048.firebaseio.com",
+    "project_id": "hive1-a9048",
+    "storage_bucket": "hive1-a9048.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:569979142021:android:5bb02f0cb46e9c40898eec",
+        "mobilesdk_app_id": "1:883352695161:android:210561df6b8743f5953fa8",
         "android_client_info": {
-          "package_name": "com.muhammadali.telegramchatapp"
+          "package_name": "com.just2click.hivechatapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "569979142021-7j4rr51i9fo2hdivauv7ee1ahkmifmog.apps.googleusercontent.com",
+          "client_id": "883352695161-a97nhr56cssjvl69vq1nv55lcofagvkf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.muhammadali.telegramchatapp",
-            "certificate_hash": "3498fdb3a7b76c02a72d33027ff1bab13b7330a1"
+            "package_name": "com.just2click.hivechatapp",
+            "certificate_hash": "a2e05f984204ad69f5126c19b5a1d18070bdf753"
           }
         },
         {
-          "client_id": "569979142021-7tnf70vgh3dl2u6pgsdf3a6lp2ej9nkc.apps.googleusercontent.com",
+          "client_id": "883352695161-5qi6vdbp7rf5aklvku2gkoj4icrm6kup.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDiNucLksbgNIEFWuDsTXrxBHe1SKfNcKY"
+          "current_key": "AIzaSyAgdyYvoBH0SNB_TKbIfi84a9UeOSBesBo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "569979142021-7tnf70vgh3dl2u6pgsdf3a6lp2ej9nkc.apps.googleusercontent.com",
+              "client_id": "883352695161-5qi6vdbp7rf5aklvku2gkoj4icrm6kup.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "569979142021-odjemf6j2jv9c1k999rv82v6ootii0r6.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.muhammadali.telegramchatapp"
-              }
             }
           ]
         }

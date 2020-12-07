@@ -1,4 +1,4 @@
-package com.muhammadali.telegramchatapp
+package com.just2click.hivechatapp
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
