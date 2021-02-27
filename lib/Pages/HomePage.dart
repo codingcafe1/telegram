@@ -188,7 +188,7 @@ class UserResult extends StatelessWidget
       Navigator.push(context, MaterialPageRoute(
           builder: (context) =>
               Chat(
-                receiverId: eachUser.id,
+                receiverId: eachUser.uid,
                 receiverAvatar: eachUser.photoUrl,
                 receiverName: eachUser.nickname,
               )

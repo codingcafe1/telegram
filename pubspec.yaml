@@ -76,6 +76,18 @@ flutter:
     - images/mimi7.gif
     - images/mimi8.gif
     - images/mimi9.gif
+    - assets/images/hive-bee-on-boarding.png
+    - assets/Icon-Yellow.jpeg
+    - assets/images/iconfill.png
+    - assets/people.jpeg
+    - assets/Friend_1@2x_100.jpg
+    - assets/Friend_2@2x_100.jpg
+    - assets/Friend_3@2x_100.jpg
+    - assets/Friend_4@2x_100.jpg
+    - assets/Friend_5@2x_100.jpg
+    - assets/camera.png
+    - assets/gallery.png
+    -
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -28,6 +28,33 @@ class AppLocalizations {
     );
   }
 
+  String get signInLabel {
+    return Intl.message(
+      'Sign in',
+      name: 'signInLabel',
+      desc: 'Sign In Label',
+      locale: localeName,
+    );
+  }
+
+  String get noHiveAccountYetLabel {
+    return Intl.message(
+      'Don\'t have a Hive account yet?',
+      name: 'signInLabel',
+      desc: 'Sign In Label',
+      locale: localeName,
+    );
+  }
+
+  String get registerLabel {
+    return Intl.message(
+      'Register hers',
+      name: 'registerLabel',
+      desc: 'Register Label',
+      locale: localeName,
+    );
+  }
+
   String get welcomeToHiveMessage {
     return Intl.message(
       'Here you can connect to other communities and users near you',

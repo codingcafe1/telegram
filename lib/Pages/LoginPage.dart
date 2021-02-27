@@ -1,19 +1,25 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:telegramchatapp/Pages/HomePage.dart';
-import 'package:telegramchatapp/Widgets/ProgressWidget.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:telegramchatapp/Pages/HomePage.dart';
+import 'package:telegramchatapp/Shared/constants.dart';
+import 'package:telegramchatapp/Widgets/ProgressWidget.dart';
+import 'package:telegramchatapp/Helpers/HelperFunctions.dart';
+import 'package:telegramchatapp/Services/DatabaseService.dart';
+
+import 'package:telegramchatapp/Services/AuthService.dart';
 import 'package:telegramchatapp/Pages/PhoneLoginPage.dart';
 
 import 'package:telegramchatapp/AppLocalizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen ({Key key}): super(key: key);
@@ -28,6 +34,8 @@ class LoginScreenState extends State<LoginScreen> {
   double _deviceHeight;
   double _deviceWidth;
 
+  final _formKey = GlobalKey<FormState>();
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -39,6 +47,14 @@ class LoginScreenState extends State<LoginScreen> {
   bool isLoggedIn = false;
   bool isLoading = false;
   FirebaseUser currentUser;
+
+  final AuthService _auth = AuthService();
+  bool _isLoading = false;
+
+  // text field state
+  String email = '';
+  String password = '';
+  String error = '';
 
   @override
   void initState() {
@@ -65,6 +81,46 @@ class LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  _onSignIn() async {
+    if (_formKey.currentState.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      await _auth.signInWithEmailAndPassword(email, password).then((result) async {
+        if (result != null) {
+          QuerySnapshot userInfoSnapshot = await DatabaseService().getUserData(email);
+
+
+          await HelperFunctions.saveUserLoggedInSharedPreference(true);
+          await HelperFunctions.saveUserEmailSharedPreference(email);
+          await HelperFunctions.saveUserNameSharedPreference(
+              userInfoSnapshot.documents[0].data['nickname']
+          );
+
+          print("Signed In");
+          await HelperFunctions.getUserLoggedInSharedPreference().then((value) {
+            print("Logged in: $value");
+          });
+          await HelperFunctions.getUserEmailSharedPreference().then((value) {
+            print("Email: $value");
+          });
+          await HelperFunctions.getUserNameSharedPreference().then((value) {
+            print("Full Name: $value");
+          });
+
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen(currentUserId: userInfoSnapshot.documents[0].data['uid'])));
+        }
+        else {
+          setState(() {
+            error = 'Error signing in!';
+            _isLoading = false;
+          });
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     _buildContext = context;
@@ -84,6 +140,7 @@ class LoginScreenState extends State<LoginScreen> {
           .backgroundColor,
       body: Container(
         alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 40.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
@@ -100,29 +157,83 @@ class LoginScreenState extends State<LoginScreen> {
               ),
               textAlign: TextAlign.center,
             ),
+            _backgroundImageWidget(),
+            // Text(AppLocalizations.of(context).signInLabel,
+            //   style: GoogleFonts.montserrat(
+            //       textStyle: TextStyle(
+            //           fontSize: 24.0,
+            //           fontWeight: FontWeight.w700,
+            //           color: Theme.of(_buildContext).buttonColor
+            //       )
+            //   ),
+            //   textAlign: TextAlign.center,
+            // ),
+            TextFormField(
+              style: TextStyle(color: Theme.of(_buildContext).buttonColor,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
+              ),
+              decoration: textInputDecoration.copyWith(labelText: AppLocalizations.of(context).emailLabel),
+              validator: (val) {
+                return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val) ? null : AppLocalizations.of(context).invalidEmailWarning;
+              },
+
+              onChanged: (val) {
+                setState(() {
+                  email = val;
+                });
+              },
+            ),
+            TextFormField(
+              style: TextStyle(color: Theme.of(_buildContext).buttonColor,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
+              ),
+              decoration: textInputDecoration.copyWith(labelText: AppLocalizations.of(context).passwordLabel),
+              validator: (val) => val.length < 6 ? AppLocalizations.of(context).passwordHint : null,
+              obscureText: true,
+              onChanged: (val) {
+                setState(() {
+                  password = val;
+                });
+              },
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 50.0,
+              child: RaisedButton(
+                  elevation: 0.0,
+                  color: Theme.of(context).primaryColor,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                  child: Text(AppLocalizations.of(context).signInLabel, style: TextStyle(color: Theme.of(context).buttonColor, fontSize: 16.0)),
+                  onPressed: () {
+                    _onSignIn();
+                  }
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                text: AppLocalizations.of(context).noHiveAccountYetLabel + ' ',
+                style: TextStyle(color: Theme.of(context).buttonColor, fontSize: 14.0),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: AppLocalizations.of(context).registerLabel,
+                    style: TextStyle(
+                        color: Theme.of(context).buttonColor,
+                        decoration: TextDecoration.underline
+                    ),
+                    recognizer: TapGestureRecognizer()..onTap = () {
+                      // widget.toggleView();
+                    },
+                  ),
+                ],
+              ),
+            ),
             GestureDetector(
               onTap: controlSignInWithGoogle,
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    FlatButton.icon(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PhoneSignInScreen()));
-                        },
-                      icon: Icon(
-                        Icons.phone,
-                        color: Colors.blue,
-                      ),
-                      label: Text(
-                        "Sign-In using Phone",
-                        style: TextStyle(
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ),
                     Container(
                       width: 270.0,
                       height: 65.0,
@@ -205,5 +316,16 @@ class LoginScreenState extends State<LoginScreen> {
         isLoading = false;
       });
     }
+  }
+
+  Widget _backgroundImageWidget() {
+    return Container(
+      height: _deviceHeight * .25,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/hive-bee-on-boarding.png"),
+          fit: BoxFit.contain,
+        ),),
+    );
   }
 }
