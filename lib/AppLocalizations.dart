@@ -566,6 +566,15 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get groupLabel {
+    return Intl.message(
+      'Group',
+      name: 'groupLabel',
+      desc: 'Group Label',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

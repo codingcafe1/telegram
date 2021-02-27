@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:telegramchatapp/AppLocalizations.dart';
 import 'package:telegramchatapp/Helpers/HelperFunctions.dart';
 import 'package:telegramchatapp/pages/LoginPage.dart';
@@ -26,12 +27,29 @@ class _AddGroupPageState extends State<AddGroupPage> {
   String _email = '';
   Stream _groups;
 
+  SharedPreferences preferences;
+  String id = "";
+  String nickname = "";
+  String photoUrl = "";
+  String aboutMe = "";
+  bool isLoading = false;
 
-  // initState
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
+
+    readDataFromLocal();
     _getUserAuthAndJoinedGroups();
+  }
+
+  void readDataFromLocal () async {
+    preferences = await SharedPreferences.getInstance();
+
+    id = preferences.getString('id');
+    nickname = preferences.getString('nickname');
+    photoUrl = preferences.getString('photoUrl');
+    aboutMe = preferences.getString('aboutMe');
   }
 
 
@@ -71,7 +89,9 @@ class _AddGroupPageState extends State<AddGroupPage> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     int reqIndex = snapshot.data['groups'].length - index - 1;
-                    return GroupTile(userName: snapshot.data['fullName'], groupId: _destructureId(snapshot.data['groups'][reqIndex]), groupName: _destructureName(snapshot.data['groups'][reqIndex]));
+                    return GroupTile(userName: snapshot.data['fullName'],
+                        groupId: _destructureId(snapshot.data['groups'][reqIndex]),
+                        groupName: _destructureName(snapshot.data['groups'][reqIndex]));
                   }
               );
             }
@@ -204,11 +224,11 @@ class _AddGroupPageState extends State<AddGroupPage> {
               selected: true,
               contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               leading: Icon(Icons.group),
-              title: Text('Groups'),
+              title: Text(AppLocalizations.of(context).groupLabel),
             ),
             ListTile(
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Settings()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SettingsScreen()));
               },
               contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               leading: Icon(Icons.account_circle),
