@@ -43,7 +43,11 @@ class HomeScreenState extends State<HomeScreen> {
         IconButton(icon: Icon(Icons.settings_applications, size: 30.0, color: Colors.white,),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
-          })
+          }),
+        IconButton(icon: Icon(Icons.group_add, size: 30.0, color: Colors.white,),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+            })
       ],
       backgroundColor: Colors.lightBlue,
       title: Container(
@@ -52,7 +56,7 @@ class HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontSize: 18.0, color: Colors.white),
           controller: searchTextEditingController,
           decoration: InputDecoration(
-            hintText: "Search here ....",
+            hintText: AppLocalizations.of(context).searchHereHint,
             hintStyle: TextStyle(color: Colors.white),
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
@@ -126,7 +130,7 @@ class HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Icon(Icons.group, color: Colors.lightBlueAccent, size: 200.0),
             Text(
-              "No other people found",
+              AppLocalizations.of(context).noOtherPeopleFoundMessage,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.lightBlueAccent, fontSize: 50.0, fontWeight: FontWeight.w500),
             )

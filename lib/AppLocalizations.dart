@@ -503,6 +503,24 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get noOtherPeopleFoundMessage {
+    return Intl.message(
+      'No other people found',
+      name: 'noOtherPeopleFoundMessage',
+      desc: 'No other people found Message',
+      locale: localeName,
+    );
+  }
+
+  String get searchHereHint {
+    return Intl.message(
+      'Search here ....',
+      name: 'searchHereHint',
+      desc: 'Search here hint',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
