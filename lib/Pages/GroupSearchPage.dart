@@ -19,7 +19,7 @@ class _GroupSearchPageState extends State<GroupSearchPage> {
   bool isLoading = false;
   bool hasUserSearched = false;
   bool _isJoined = false;
-  String _userName = '';
+  String nickname = '';
   FirebaseUser _user;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -35,7 +35,7 @@ class _GroupSearchPageState extends State<GroupSearchPage> {
   // functions
   _getCurrentUserNameAndUid() async {
     await HelperFunctions.getUserNameSharedPreference().then((value) {
-      _userName = value;
+      nickname = value;
     });
     _user = await FirebaseAuth.instance.currentUser();
   }
@@ -84,7 +84,7 @@ class _GroupSearchPageState extends State<GroupSearchPage> {
         itemCount: searchResultSnapshot.documents.length,
         itemBuilder: (context, index) {
           return groupTile(
-            _userName,
+            nickname,
             searchResultSnapshot.documents[index].data["groupId"],
             searchResultSnapshot.documents[index].data["groupName"],
             searchResultSnapshot.documents[index].data["admin"],

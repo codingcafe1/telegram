@@ -575,6 +575,33 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get groupsLabel {
+    return Intl.message(
+      'Groups',
+      name: 'groupsLabel',
+      desc: 'Groups Label',
+      locale: localeName,
+    );
+  }
+
+  String get cancelLabel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelLabel',
+      desc: 'Cancel Label',
+      locale: localeName,
+    );
+  }
+
+  String get createLabel {
+    return Intl.message(
+      'Create',
+      name: 'createLabel',
+      desc: 'Create Label',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

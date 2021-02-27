@@ -23,7 +23,6 @@ class _AddGroupPageState extends State<AddGroupPage> {
   final AuthService _auth = AuthService();
   FirebaseUser _user;
   String _groupName;
-  String _userName = '';
   String _email = '';
   Stream _groups;
 
@@ -50,6 +49,8 @@ class _AddGroupPageState extends State<AddGroupPage> {
     nickname = preferences.getString('nickname');
     photoUrl = preferences.getString('photoUrl');
     aboutMe = preferences.getString('aboutMe');
+
+    print(nickname);
   }
 
 
@@ -89,7 +90,7 @@ class _AddGroupPageState extends State<AddGroupPage> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     int reqIndex = snapshot.data['groups'].length - index - 1;
-                    return GroupTile(userName: snapshot.data['fullName'],
+                    return GroupTile(userName: snapshot.data['nickname'],
                         groupId: _destructureId(snapshot.data['groups'][reqIndex]),
                         groupName: _destructureName(snapshot.data['groups'][reqIndex]));
                   }
@@ -115,12 +116,17 @@ class _AddGroupPageState extends State<AddGroupPage> {
 
   // functions
   _getUserAuthAndJoinedGroups() async {
+    preferences = await SharedPreferences.getInstance();
+
+    print(preferences);
+
     _user = await FirebaseAuth.instance.currentUser();
     await HelperFunctions.getUserNameSharedPreference().then((value) {
       setState(() {
-        _userName = value;
+        nickname = value;
       });
     });
+    print(nickname);
     DatabaseService(uid: _user.uid).getUserGroups().then((snapshots) {
       // print(snapshots);
       setState(() {
@@ -149,13 +155,13 @@ class _AddGroupPageState extends State<AddGroupPage> {
 
   void _popupDialog(BuildContext context) {
     Widget cancelButton = FlatButton(
-      child: Text("Cancel"),
+      child: Text(AppLocalizations.of(context).cancelLabel),
       onPressed:  () {
         Navigator.of(context).pop();
       },
     );
     Widget createButton = FlatButton(
-      child: Text("Create"),
+      child: Text(AppLocalizations.of(context).createLabel),
       onPressed:  () async {
         if(_groupName != null) {
           await HelperFunctions.getUserNameSharedPreference().then((val) {
@@ -198,8 +204,8 @@ class _AddGroupPageState extends State<AddGroupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Groups', style: TextStyle(color: Colors.white, fontSize: 27.0, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.black87,
+        title: Text(AppLocalizations.of(context).groupsLabel, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.lightBlue,
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
@@ -217,7 +223,7 @@ class _AddGroupPageState extends State<AddGroupPage> {
           children: <Widget>[
             Icon(Icons.account_circle, size: 150.0, color: Colors.grey[700]),
             SizedBox(height: 15.0),
-            Text(_userName, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
+            Text('test', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 7.0),
             ListTile(
               onTap: () {},

@@ -12,13 +12,13 @@ class DatabaseService {
   final CollectionReference groupCollection = Firestore.instance.collection('groups');
 
   // Update userdata
-  Future updateUserData(String fullName, String email, String password) async {
+  Future updateUserData(String nickname, String email, String password) async {
     return await userCollection.document(uid).setData({
-      'fullName': fullName,
+      'nickname': nickname,
       'email': email,
       'password': password,
       'groups': [],
-      'profilePic': ''
+      'photoUrl': ''
     });
   }
 
