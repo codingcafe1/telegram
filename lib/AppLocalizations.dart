@@ -521,6 +521,51 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get sendAMessageHint {
+    return Intl.message(
+      'Send a message ...',
+      name: 'sendAMessageHint',
+      desc: 'Send A Message Hint',
+      locale: localeName,
+    );
+  }
+
+  String get adminLabel {
+    return Intl.message(
+      'Admin',
+      name: 'adminLabel',
+      desc: 'Admin label',
+      locale: localeName,
+    );
+  }
+
+  String get joinLabel {
+    return Intl.message(
+      'Join',
+      name: 'joinLabel',
+      desc: 'Join label',
+      locale: localeName,
+    );
+  }
+
+  String get accountSettingsLabel {
+    return Intl.message(
+      'Account Settings',
+      name: 'accountSettingsLabel',
+      desc: 'Account Settings label',
+      locale: localeName,
+    );
+  }
+
+  String get joinGroupHint {
+    return Intl.message(
+      'You\'ve not joined any group, tap on the \'add\' icon to create a group or search for groups by tapping on the search button below.',
+      name: 'joinGroupHint',
+      desc: 'Join Group Hint',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

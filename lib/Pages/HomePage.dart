@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:telegramchatapp/Models/user.dart';
 import 'package:telegramchatapp/main.dart';
 import 'package:telegramchatapp/Pages/ChattingPage.dart';
+import 'package:telegramchatapp/Pages/AddGroupPage.dart';
 import 'package:telegramchatapp/Pages/AccountSettingsPage.dart';
 import 'package:telegramchatapp/Widgets/ProgressWidget.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -46,7 +47,7 @@ class HomeScreenState extends State<HomeScreen> {
           }),
         IconButton(icon: Icon(Icons.group_add, size: 30.0, color: Colors.white,),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => AddGroupPage()));
             })
       ],
       backgroundColor: Colors.lightBlue,
