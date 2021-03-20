@@ -38,7 +38,11 @@ class MessageTile extends StatelessWidget {
             //   style: TextStyle(fontSize: 13.0, fontWeight: FontWeight.bold, color: Colors.black, letterSpacing: -0.5),),
             SizedBox(height: 7.0),
             Text(message, textAlign: TextAlign.start, style: TextStyle(fontSize: 15.0, color: Theme.of(context).buttonColor),),
-            Text(DateFormat("HH:mm").format(timeStamp), style: TextStyle(fontSize: 12.0, color: Theme.of(context).hintColor),),
+            Text(
+              DateFormat("HH:mm").format(timeStamp),
+              textAlign: TextAlign.justify,
+              style: TextStyle(fontSize: 12.0,
+                  color: Theme.of(context).buttonColor),),
           ],
         ),
       ),
