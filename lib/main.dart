@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color.fromRGBO(244, 244, 244, 1),
           errorColor: Color.fromRGBO(255,69,0, 1),
           disabledColor: Color.fromRGBO(196, 196, 196, 1),
+          hintColor: Color.fromARGB(75, 75, 74, 1),
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Montserrat'
       ),

@@ -665,6 +665,15 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get joinedGroupHint {
+    return Intl.message(
+      'Join the conversation as',
+      name: 'joinedGroupHint',
+      desc: 'Join group as hint',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -165,7 +165,6 @@ class _AddGroupPageState extends State<AddGroupPage> {
       onPressed:  () async {
         if(_groupName != null) {
           await DatabaseService().getUserNameByEmail(_user.email).then((val) {
-            print('val?' + val);
             DatabaseService(uid: _user.uid).createGroup(val, _groupName);
           });
 
