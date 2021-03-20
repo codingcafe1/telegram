@@ -48,7 +48,7 @@ class AppLocalizations {
 
   String get registerLabel {
     return Intl.message(
-      'Register hers',
+      'Register here',
       name: 'registerLabel',
       desc: 'Register Label',
       locale: localeName,
@@ -599,6 +599,69 @@ class AppLocalizations {
       'Create',
       name: 'createLabel',
       desc: 'Create Label',
+      locale: localeName,
+    );
+  }
+
+  String get createGroupLabel {
+    return Intl.message(
+      'Create a group',
+      name: 'createGroupLabel',
+      desc: 'Create a group Label',
+      locale: localeName,
+    );
+  }
+
+  String get profileNameTitle {
+    return Intl.message(
+      'Profile name',
+      name: 'profileNameTitle',
+      desc: 'Profile name title',
+      locale: localeName,
+    );
+  }
+
+  String get bioTitle {
+    return Intl.message(
+      'Bio',
+      name: 'bioTitle',
+      desc: 'Bio title',
+      locale: localeName,
+    );
+  }
+
+  String get updatedTitle {
+    return Intl.message(
+      'Updated',
+      name: 'updatedTitle',
+      desc: 'Updated title',
+      locale: localeName,
+    );
+  }
+
+  String get updatedSuccessfullyMessage {
+    return Intl.message(
+      'Updated successfully',
+      name: 'updatedSuccessfullyMessage',
+      desc: 'Updated successfully message',
+      locale: localeName,
+    );
+  }
+
+  String get photoUpdatedSuccessfullyMessage {
+    return Intl.message(
+      'Photo updated successfully',
+      name: 'photoUpdatedSuccessfullyMessage',
+      desc: 'Photo updated successfully message',
+      locale: localeName,
+    );
+  }
+
+  String get bioHint {
+    return Intl.message(
+      'e.g About me',
+      name: 'bioHint',
+      desc: 'Bio hint',
       locale: localeName,
     );
   }

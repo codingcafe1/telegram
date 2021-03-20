@@ -41,34 +41,34 @@ class HomeScreenState extends State<HomeScreen> {
     return AppBar (
       automaticallyImplyLeading: false,
       actions: <Widget>[
-        IconButton(icon: Icon(Icons.settings_applications, size: 30.0, color: Colors.white,),
+        IconButton(icon: Icon(Icons.settings_applications, size: 30.0, color: Theme.of(context).backgroundColor,),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
           }),
-        IconButton(icon: Icon(Icons.group_add, size: 30.0, color: Colors.white,),
+        IconButton(icon: Icon(Icons.group_add, size: 30.0, color: Theme.of(context).backgroundColor,),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => AddGroupPage()));
             })
       ],
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Theme.of(context).primaryColor,
       title: Container(
         margin: new EdgeInsets.only(bottom: 4.0),
         child: TextFormField(
-          style: TextStyle(fontSize: 18.0, color: Colors.white),
+          style: TextStyle(fontSize: 18.0, color: Theme.of(context).backgroundColor),
           controller: searchTextEditingController,
           decoration: InputDecoration(
             hintText: AppLocalizations.of(context).searchHereHint,
-            hintStyle: TextStyle(color: Colors.white),
+            hintStyle: TextStyle(color: Theme.of(context).backgroundColor),
             enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: BorderSide(color: Theme.of(context).disabledColor),
             ),
             focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                borderSide: BorderSide(color: Theme.of(context).backgroundColor),
             ),
             filled: true,
-            prefixIcon: Icon(Icons.person_pin, color: Colors.white, size: 30.0,),
+            prefixIcon: Icon(Icons.person_pin, color: Theme.of(context).backgroundColor, size: 30.0,),
             suffixIcon: IconButton(
-                icon: Icon(Icons.clear, color: Colors.white,),
+                icon: Icon(Icons.clear, color: Theme.of(context).backgroundColor,),
                 onPressed: emptyTextFormField(),
             )
           ),
@@ -129,11 +129,11 @@ class HomeScreenState extends State<HomeScreen> {
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
-            Icon(Icons.group, color: Colors.lightBlueAccent, size: 200.0),
+            Icon(Icons.group, color: Theme.of(context).primaryColor, size: 200.0),
             Text(
               AppLocalizations.of(context).noOtherPeopleFoundMessage,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.lightBlueAccent, fontSize: 50.0, fontWeight: FontWeight.w500),
+              style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 50.0, fontWeight: FontWeight.w500),
             )
           ],
         )
@@ -152,21 +152,21 @@ class UserResult extends StatelessWidget
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: Container(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         child: Column(
           children: <Widget>[
             GestureDetector(
               onTap: () => sendUserToChatPage(context),
               child: ListTile(
                 leading: CircleAvatar(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Theme.of(context).buttonColor,
                   backgroundImage: CachedNetworkImageProvider(eachUser.photoUrl),
 
                 ),
                 title: Text(
                   eachUser.nickname,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).buttonColor,
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold
                   ),

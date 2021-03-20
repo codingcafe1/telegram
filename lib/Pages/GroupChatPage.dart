@@ -74,9 +74,9 @@ class _GroupChatPageState extends State<GroupChatPage> {
   Widget build(BuildContext context) {
     return Scaffold (
       appBar: AppBar (
-        title: Text(widget.groupName, style: TextStyle (color: Colors.white)),
+        title: Text(widget.groupName, style: TextStyle (color: Theme.of(context).backgroundColor)),
         centerTitle: true,
-        backgroundColor: Colors.black87,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0.0,
       ),
       body: Container (
@@ -88,19 +88,19 @@ class _GroupChatPageState extends State<GroupChatPage> {
               width: MediaQuery.of(context).size.width,
               child: Container (
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                color: Colors.grey[700],
+                color: Theme.of(context).dividerColor,
                 child: Row (
                     children: <Widget>[
                       Expanded (
                         child: TextField (
                           controller: messageEditingController,
                           style: TextStyle (
-                              color: Colors.white
+                              color: Theme.of(context).backgroundColor
                           ),
                           decoration: InputDecoration (
                               hintText: AppLocalizations.of(context).sendAMessageHint,
                               hintStyle: TextStyle (
-                                  color: Colors.white38,
+                                  color: Theme.of(context).dividerColor,
                                   fontSize: 16.0
                               ),
                               border: InputBorder.none
@@ -118,10 +118,10 @@ class _GroupChatPageState extends State<GroupChatPage> {
                           height: 50.0,
                           width: 50.0,
                           decoration: BoxDecoration (
-                              color: Colors.blueAccent,
+                              color: Theme.of(context).buttonColor,
                               borderRadius: BorderRadius.circular(50.0)
                           ),
-                          child: Center(child: Icon(Icons.send, color: Colors.white,),),
+                          child: Center(child: Icon(Icons.send, color: Theme.of(context).backgroundColor,),),
                         ),
                       )
                     ]

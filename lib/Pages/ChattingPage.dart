@@ -32,7 +32,7 @@ class Chat extends StatelessWidget {
           Padding(
               padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundColor: Colors.black,
+              backgroundColor: Theme.of(context).primaryColor,
               backgroundImage: CachedNetworkImageProvider(receiverAvatar),
             ),
           )

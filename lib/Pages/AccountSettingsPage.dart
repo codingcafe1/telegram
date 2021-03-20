@@ -21,12 +21,12 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.white,
+          color: Theme.of(context).backgroundColor,
         ),
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Theme.of(context).primaryColor,
         title: Text(
           AppLocalizations.of(context).accountSettingsLabel,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Theme.of(context).backgroundColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -191,7 +191,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                               placeholder: (context, url) => Container(
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2.0,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
+                                  valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
                                 ),
                                 width: 200.0,
                                 height: 200.0,
@@ -205,7 +205,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                             borderRadius: BorderRadius.all(Radius.circular(125.0)),
                             clipBehavior: Clip.hardEdge,
                           )
-                          : Icon(Icons.account_circle, size: 90.0, color: Colors.grey,)
+                          : Icon(Icons.account_circle, size: 90.0, color: Theme.of(context).dividerColor,)
                           : Material(
                             // Display new updated image
                             child: Image.file(
@@ -226,7 +226,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                         onPressed: getImage,
                         padding: EdgeInsets.all(0.0),
                         splashColor: Colors.transparent,
-                        highlightColor: Colors.grey,
+                        highlightColor: Theme.of(context).dividerColor,
                         iconSize: 200.0,
                       ),
                     ],
@@ -243,18 +243,18 @@ class SettingsScreenState extends State<SettingsScreen> {
                   // User name
                   Container(
                     child: Text(
-                      "Profile name:",
+                      AppLocalizations.of(context).profileNameTitle + ':',
                       style: TextStyle(
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
-                        color: Colors.lightBlueAccent
+                        color: Theme.of(context).primaryColor
                       ),
                     ),
                     margin: EdgeInsets.only(left: 10.0, bottom: 5.0, top: 10.0),
                   ),
                   Container(
                     child: Theme(
-                      data: Theme.of(context).copyWith(primaryColor: Colors.lightBlueAccent),
+                      data: Theme.of(context).copyWith(primaryColor: Theme.of(context).primaryColor),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "e.g John Doe",
@@ -274,23 +274,23 @@ class SettingsScreenState extends State<SettingsScreen> {
                   // About me - bio
                   Container(
                     child: Text(
-                      "Bio:",
+                      AppLocalizations.of(context).bioTitle + ':',
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
-                          color: Colors.lightBlueAccent
+                          color: Theme.of(context).primaryColor
                       ),
                     ),
                     margin: EdgeInsets.only(left: 10.0, bottom: 5.0, top: 30.0),
                   ),
                   Container(
                     child: Theme(
-                      data: Theme.of(context).copyWith(primaryColor: Colors.lightBlueAccent),
+                      data: Theme.of(context).copyWith(primaryColor: Theme.of(context).accentColor),
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: "e.g About me",
+                          hintText: AppLocalizations.of(context).bioHint,
                           contentPadding: EdgeInsets.all(5.0),
-                          hintStyle: TextStyle(color: Colors.grey),
+                          hintStyle: TextStyle(color: Theme.of(context).dividerColor),
                         ),
                         controller: aboutMeTextEditingController,
                         onChanged: (value) {
@@ -311,12 +311,12 @@ class SettingsScreenState extends State<SettingsScreen> {
                 child: FlatButton(
                   onPressed: updateDate,
                   child: Text(
-                    "Update", style: TextStyle(fontSize: 16.0, )
+                    AppLocalizations.of(context).updatedTitle, style: TextStyle(fontSize: 16.0, )
                   ),
-                  color: Colors.lightBlueAccent,
-                  highlightColor: Colors.grey,
+                  color: Theme.of(context).primaryColor,
+                  highlightColor: Theme.of(context).dividerColor,
                   splashColor: Colors.transparent,
-                  textColor: Colors.white,
+                  textColor: Theme.of(context).backgroundColor,
                   padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
                 ),
                 margin: EdgeInsets.only(top: 50.0, bottom: 1.0),
@@ -326,11 +326,11 @@ class SettingsScreenState extends State<SettingsScreen> {
               Padding(
                   padding: EdgeInsets.only(left: 50.0, right: 50.0,),
                 child: RaisedButton(
-                  color: Colors.red,
+                  color: Theme.of(context).errorColor,
                   onPressed: logoutUser,
                   child: Text(
-                    "Logout",
-                    style: TextStyle(color: Colors.white, fontSize: 14.0),
+                    AppLocalizations.of(context).logoutButton,
+                    style: TextStyle(color: Theme.of(context).backgroundColor, fontSize: 14.0),
                   ),
                 ),
               ),

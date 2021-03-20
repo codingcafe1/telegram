@@ -66,7 +66,7 @@ class _AddGroupPageState extends State<AddGroupPage> {
                 onTap: () {
                   _popupDialog(context);
                 },
-                child: Icon(Icons.add_circle, color: Colors.grey[700], size: 75.0)
+                child: Icon(Icons.add_circle, color: Theme.of(context).dividerColor, size: 75.0)
             ),
             SizedBox(height: 20.0),
             Text(AppLocalizations.of(context).joinGroupHint),
@@ -164,16 +164,18 @@ class _AddGroupPageState extends State<AddGroupPage> {
       child: Text(AppLocalizations.of(context).createLabel),
       onPressed:  () async {
         if(_groupName != null) {
-          await HelperFunctions.getUserNameSharedPreference().then((val) {
+          await DatabaseService().getUserNameByEmail(_user.email).then((val) {
+            print('val?' + val);
             DatabaseService(uid: _user.uid).createGroup(val, _groupName);
           });
+
           Navigator.of(context).pop();
         }
       },
     );
 
     AlertDialog alert = AlertDialog(
-      title: Text("Create a group"),
+      title: Text(AppLocalizations.of(context).createGroupLabel),
       content: TextField(
           onChanged: (val) {
             _groupName = val;
@@ -181,7 +183,7 @@ class _AddGroupPageState extends State<AddGroupPage> {
           style: TextStyle(
               fontSize: 15.0,
               height: 2.0,
-              color: Colors.black
+              color: Theme.of(context).primaryColor
           )
       ),
       actions: [
@@ -204,61 +206,27 @@ class _AddGroupPageState extends State<AddGroupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).groupsLabel, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.lightBlue,
+        title: Text(AppLocalizations.of(context).groupsLabel, style: TextStyle(color: Theme.of(context).backgroundColor, fontWeight: FontWeight.bold)),
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
-              icon: Icon(Icons.search, color: Colors.white, size: 25.0),
+              icon: Icon(Icons.search, color: Theme.of(context).backgroundColor, size: 25.0),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => GroupSearchPage()));
               }
           )
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 50.0),
-          children: <Widget>[
-            Icon(Icons.account_circle, size: 150.0, color: Colors.grey[700]),
-            SizedBox(height: 15.0),
-            Text('test', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 7.0),
-            ListTile(
-              onTap: () {},
-              selected: true,
-              contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-              leading: Icon(Icons.group),
-              title: Text(AppLocalizations.of(context).groupLabel),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SettingsScreen()));
-              },
-              contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              onTap: () async {
-                await _auth.signOut();
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => LoginScreen()), (Route<dynamic> route) => false);
-              },
-              contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-              leading: Icon(Icons.exit_to_app, color: Colors.red),
-              title: Text('Log Out', style: TextStyle(color: Colors.red)),
-            ),
-          ],
-        ),
-      ),
+
       body: groupsList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _popupDialog(context);
         },
-        child: Icon(Icons.add, color: Colors.white, size: 30.0),
-        backgroundColor: Colors.grey[700],
+        child: Icon(Icons.add, color: Theme.of(context).backgroundColor, size: 30.0),
+        backgroundColor: Theme.of(context).dividerColor,
         elevation: 0.0,
       ),
     );

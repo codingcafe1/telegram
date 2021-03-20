@@ -287,7 +287,8 @@ class LoginScreenState extends State<LoginScreen> {
           "id": firebaseUser.uid,
           "aboutMe": "I'm using Hive Chat",
           "createdAt": DateTime.now().microsecondsSinceEpoch.toString(),
-          "chattingWith": null
+          "chattingWith": null,
+          "email": googleUser.email
         });
 
         // Write data
@@ -295,11 +296,13 @@ class LoginScreenState extends State<LoginScreen> {
         await preferences.setString("id", currentUser.uid);
         await preferences.setString("nickname", currentUser.displayName);
         await preferences.setString("photoUrl", currentUser.photoUrl);
+        await preferences.setString("email", documentSnapshot[0]["email"]);
       } else {  // User exists
         currentUser = firebaseUser;
         await preferences.setString("id", documentSnapshot[0]["id"]);
         await preferences.setString("nickname", documentSnapshot[0]["nickname"]);
         await preferences.setString("photoUrl", documentSnapshot[0]["photoUrl"]);
+        await preferences.setString("email", documentSnapshot[0]["email"]);
         await preferences.setString("aboutMe", documentSnapshot[0]["aboutMe"]);
       }
 

@@ -34,6 +34,7 @@ class DatabaseService {
       'recentMessageSender': ''
     });
 
+    print(userName);
     await groupDocRef.updateData({
       'members': FieldValue.arrayUnion([uid + '_' + userName]),
       'groupId': groupDocRef.documentID
@@ -93,8 +94,16 @@ class DatabaseService {
   // Get user data
   Future getUserData(String email) async {
     QuerySnapshot snapshot = await userCollection.where('email', isEqualTo: email).getDocuments();
-    print(snapshot.documents[0].data);
     return snapshot;
+  }
+
+  Future getUserNameByEmail(String email) async {
+    QuerySnapshot snapshot = await userCollection.where('email', isEqualTo: email).getDocuments();
+    if (snapshot != null) {
+      return snapshot.documents[0].data['nickname'];
+    }
+
+    return '';
   }
 
   // Get user groups
