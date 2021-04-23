@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>569979142021-odjemf6j2jv9c1k999rv82v6ootii0r6.apps.googleusercontent.com</string>
+	<string>883352695161-d416o0l8rpp8vo35mc5orj3f9shj7m15.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>Paste your Key Here</string>
+	<string>com.googleusercontent.apps.883352695161-d416o0l8rpp8vo35mc5orj3f9shj7m15</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>569979142021-7j4rr51i9fo2hdivauv7ee1ahkmifmog.apps.googleusercontent.com</string>
+	<string>883352695161-a97nhr56cssjvl69vq1nv55lcofagvkf.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD1beeMpBpbazkf5ZEgNSbOsTA6qKakgIk</string>
+	<string>AIzaSyDf-ZdPh0YbokRjSdr9ZlpNiu6lEQihbfo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>569979142021</string>
+	<string>883352695161</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.muhammadali.telegramchatapp</string>
+	<string>com.just2click.hivechatapp</string>
 	<key>PROJECT_ID</key>
-	<string>chat-app-2021</string>
+	<string>hive1-a9048</string>
 	<key>STORAGE_BUCKET</key>
-	<string>chat-app-2021.appspot.com</string>
+	<string>hive1-a9048.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:569979142021:ios:884d5cae87f2742f898eec</string>
+	<string>1:883352695161:ios:34089d9e884693b6953fa8</string>
 	<key>DATABASE_URL</key>
-	<string>https://chat-app-2021.firebaseio.com</string>
+	<string>https://hive1-a9048.firebaseio.com</string>
 </dict>
 </plist>
